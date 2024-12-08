@@ -1,12 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const hotelRoutes = require("./routes/hotel");
 const userRoutes = require("./routes/user");
 const bookingRoutes = require("./routes/booking");
 const roomCategoryRoutes = require("./routes/roomCategory");
 
 const app = express();
-
+app.use(cors({
+  origin: 'http://localhost:5173' // Allow only React app's port
+}));
 app.use(express.json()); // Parse JSON request bodies
 
 // Database connection
