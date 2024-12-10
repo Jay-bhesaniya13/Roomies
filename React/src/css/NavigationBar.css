@@ -7,3 +7,15 @@
     color: #fff; /* Text color */
   }
   
+  .nav-link.active-link {
+    color: #ffffff !important;
+    background-color: #007bff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+.navbar .btn.active-link {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: white;
+}

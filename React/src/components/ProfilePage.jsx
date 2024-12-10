@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Setting = () => {
+const ProfilePage = () => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newName, setNewName] = useState('');
@@ -195,4 +195,4 @@ const Setting = () => {
     );
 };
 
-export default Setting;
+export default ProfilePage;

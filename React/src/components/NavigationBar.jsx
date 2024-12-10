@@ -42,9 +42,9 @@ const NavigationBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto">
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="/hotel">Hotels</Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <Link className="nav-link" to="/contact">Contact</Link>
                         </li>
@@ -55,7 +55,7 @@ const NavigationBar = () => {
                                     <Link className="nav-link" to="/profile">Profile</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/Bookings">Bookings</Link>
+                                    <Link className="nav-link" to="/booking">Bookings</Link>
                                 </li>
                                 
                             </>

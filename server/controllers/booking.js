@@ -126,6 +126,30 @@ const getBookingById = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+const getBookingByUserId = async (req, res) => {
+  try {
+    const { user_id } = req.params;
+     
+    console.log("Fetching bookings for user_id:", user_id);
+
+    
+
+    // Fetch all bookings for the given user_id
+    const bookings = await Booking.find({ user_id });
+
+    // Check if any bookings are found
+    if (!bookings.length) {
+      return res.status(404).json({ message: "No bookings found for this user_id." });
+    }
+    console.log(bookings)
+    // Return the bookings
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error("Error retrieving bookings:", error);
+    res.status(500).json({ error: "Internal server error." });
+  }
+};
+
 
 // Update check-in and check-out dates
 const updateBookingDates = async (req, res) => {
@@ -241,4 +265,5 @@ module.exports = {
   getBookingById,
   updateBookingDates,
   cancelBooking,
+  getBookingByUserId
 };

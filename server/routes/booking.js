@@ -4,6 +4,7 @@ const {
   getBookingById,
   updateBookingDates,
   cancelBooking,
+  getBookingByUserId
 } = require("../controllers/booking");
 
 const router = express.Router();
@@ -19,5 +20,7 @@ router.put("/:booking_id", updateBookingDates);
 
 // DELETE: Cancel a booking
 router.delete("/:booking_id", cancelBooking);
+
+router.get("/user/:user_id",getBookingByUserId);
 
 module.exports = router;

@@ -26,6 +26,34 @@ const createRoomCategory = async (req, res) => {
   }
 };
 
+
+//Get all room Catagory by Hotel Id
+const getRoomCategoriesByHotelId = async (req, res) => {
+  try {
+    const { hotel_id } = req.params;
+
+    console.log("Hotel ID in room category (hotel):", hotel_id);
+
+    // Fetch room categories for the given hotel_id
+    const roomCategories = await RoomCategory.find({ hotel_id });
+
+    console.log("RoomCatagor in controller:********")
+    console.log( roomCategories)
+
+    // Check if room categories exist for the given hotel_id
+    if (!roomCategories.length) {
+      return res.status(404).json({ message: "No room categories found for this hotel_id." });
+    }
+
+    // Return the room categories
+    res.status(200).json(roomCategories);
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ error: "Internal server error." });
+  }
+};
+
+
 // Get room category details by ID
 const getRoomCategoryById = async (req, res) => {
   try {
@@ -94,4 +122,5 @@ module.exports = {
   getRoomCategoryById,
   updateRoomCategory,
   deleteRoomCategory,
+  getRoomCategoriesByHotelId ,
 };

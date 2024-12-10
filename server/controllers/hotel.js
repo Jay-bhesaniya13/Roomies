@@ -40,8 +40,7 @@ const createHotel = async (req, res) => {
 const getHotelById = async (req, res) => {
   try {
     const { hotel_id } = req.params;
-    console.log("Hotel ID received:", hotel_id);
-
+ 
     // Find the hotel with the given hotel_id
     const hotel = await Hotel.findOne({ _id:hotel_id });
 
