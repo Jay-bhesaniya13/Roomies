@@ -20,3 +20,13 @@
 
 5. **Run the Server**  
    - Start the server: `npm start` or `node app.js`
+
+6. **Bootstrap**
+   - cmd: "npm i bootstrap"
+7. **Bcryptjs**
+    - cmd: "npm install bcryptjs"
+8. **axios**
+    - cmd: "npm install axios"
+
+
+   

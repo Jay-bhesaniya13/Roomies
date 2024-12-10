@@ -5,7 +5,7 @@ const hotelRoutes = require("./routes/hotel");
 const userRoutes = require("./routes/user");
 const bookingRoutes = require("./routes/booking");
 const roomCategoryRoutes = require("./routes/roomCategory");
-
+const ContactRoute=require("./routes/contact")
 const app = express();
 app.use(cors({
   origin: 'http://localhost:5173' // Allow only React app's port
@@ -23,7 +23,7 @@ app.use("/API/hotel", hotelRoutes);
 app.use("/API/user", userRoutes);
 app.use("/API/booking", bookingRoutes);
 app.use("/API/roomCategory", roomCategoryRoutes);
-
+app.use("/API/contact", ContactRoute);
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

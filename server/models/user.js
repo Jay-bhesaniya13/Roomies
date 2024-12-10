@@ -6,6 +6,10 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true },
   mobile_no: { type: String, required: true },
   age: { type: Number, required: true },
+  password: { 
+    type: String, 
+    required: true, 
+  },
   active_status: { 
     type: String, 
     enum: ["closed", "open"], 
