@@ -22,11 +22,11 @@
    - Start the server: `npm start` or `node app.js`
 
 6. **Bootstrap**
-   - cmd: "npm i bootstrap"
+   - install Bootstrap: `npm i bootstrap`
 7. **Bcryptjs**
-    - cmd: "npm install bcryptjs"
+    - install Bcryptjs: `npm install bcryptjs`
 8. **axios**
-    - cmd: "npm install axios"
+    - install axios: `npm install axios`
 
 
    

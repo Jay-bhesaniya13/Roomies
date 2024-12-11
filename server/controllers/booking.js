@@ -106,7 +106,6 @@ const createBooking = async (req, res) => {
 };
 
 
-
 // Get booking details by ID
 const getBookingById = async (req, res) => {
   try {
@@ -131,8 +130,6 @@ const getBookingByUserId = async (req, res) => {
     const { user_id } = req.params;
      
     console.log("Fetching bookings for user_id:", user_id);
-
-    
 
     // Fetch all bookings for the given user_id
     const bookings = await Booking.find({ user_id });

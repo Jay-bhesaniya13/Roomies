@@ -17,7 +17,7 @@ const Login = () => {
         // Store username and authenticate value in local storage
         localStorage.setItem('username', response.data.user.name);
         localStorage.setItem('userId', response.data.user.id);
-        localStorage.setItem('authenticate', response.data.authenticate);
+        localStorage.setItem('isAuthenticate', response.data.authenticate);
         
 
 

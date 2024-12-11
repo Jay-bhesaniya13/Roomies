@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Hotel = () => {
     const location = useLocation();
-    const { hotelId, hotelName } = location.state || {}; // Extract hotelId and hotelName
+    const navigate = useNavigate();
+    const { hotelId, hotelName } = location.state || {};
     const [roomCategories, setRoomCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -16,7 +17,7 @@ const Hotel = () => {
                     throw new Error('Failed to fetch room categories');
                 }
                 const data = await response.json();
-                setRoomCategories(data.filter((category) => category.isExistCategory)); // Filter by `isExistCategory`
+                setRoomCategories(data.filter((category) => category.isExistCategory));
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -28,6 +29,19 @@ const Hotel = () => {
             fetchRoomCategories();
         }
     }, [hotelId]);
+
+    const handleBookNow = (category) => {
+        navigate('/room-booking', {
+            state: {
+                hotelId,
+                hotelName,
+                roomCategoryId: category._id,
+                categoryName: category.category_name,
+                pricePerRoom:category.amount_per_room ,
+                max_bed_per_room:category.max_bed_per_room
+            },
+        });
+    };
 
     if (!hotelId) {
         return <p className="text-center text-danger">No hotel selected</p>;
@@ -51,6 +65,12 @@ const Hotel = () => {
                                     <p>Available Rooms: {category.available_room}</p>
                                     <p>Price per Room: ₹{category.amount_per_room}</p>
                                     <p>Food Charge (per person): ₹{category.food_charge}</p>
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={() => handleBookNow(category)}
+                                    >
+                                        Book Now
+                                    </button>
                                 </div>
                             </div>
                         </div>

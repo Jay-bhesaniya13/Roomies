@@ -7,7 +7,7 @@ const NavigationBar = () => {
     const navigate = useNavigate();
     
     // Get authentication status from localStorage
-    const isAuthenticated = localStorage.getItem('authenticate') === 'true';
+    const isAuthenticated = localStorage.getItem('isAuthenticate') === 'true';
     const username = localStorage.getItem('username');
 
     // Function to handle logout
@@ -22,7 +22,7 @@ const NavigationBar = () => {
             <div className="container-fluid">
              
             <Link className="navbar-brand" to="/">
-  {localStorage.getItem('authenticate') === 'true' ? (
+  {localStorage.getItem('isAuthenticate') === 'true' ? (
     <span className="username-box">{localStorage.getItem('username')}</span>
   ) : (
     'Roomies'
@@ -55,7 +55,7 @@ const NavigationBar = () => {
                                     <Link className="nav-link" to="/profile">Profile</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/booking">Bookings</Link>
+                                    <Link className="nav-link" to="/bookings">Bookings</Link>
                                 </li>
                                 
                             </>

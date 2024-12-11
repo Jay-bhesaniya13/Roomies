@@ -144,22 +144,7 @@ const ProfilePage = () => {
 
             {activeForm === 'username' && (
                 <form onSubmit={handleUpdate} style={{ marginTop: '20px' }}>
-                    <div>
-                        <label>Old Password:</label>
-                        <input
-                            type="password"
-                            value={oldPassword}
-                            onChange={(e) => setOldPassword(e.target.value)}
-                            required
-                            style={{
-                                width: '100%',
-                                padding: '10px',
-                                marginBottom: '10px',
-                                borderRadius: '5px',
-                                border: '1px solid #ccc',
-                            }}
-                        />
-                    </div>
+                    
                     <div>
                         <label>New Username:</label>
                         <input

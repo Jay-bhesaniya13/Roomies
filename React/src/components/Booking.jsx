@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import "../css/Booking.css"
+import "../css/Booking.css";
 
 const Booking = () => {
     const [bookings, setBookings] = useState([]);
@@ -57,6 +57,8 @@ const Booking = () => {
                             className={`booking-card ${booking.booking_status.toLowerCase()}`}
                         >
                             <p><strong>Booking Status:</strong> {booking.booking_status}</p>
+                            <p><strong>Hotel:</strong> {booking.hotel_name}</p>
+                            <p><strong>Category:</strong> {booking.room_category_id.category_name}</p>
                             <p><strong>Check-in:</strong> {new Date(booking.check_in_date).toLocaleDateString()}</p>
                             <p><strong>Check-out:</strong> {new Date(booking.check_out_date).toLocaleDateString()}</p>
                             <p><strong>No. of Rooms:</strong> {booking.no_of_rooms}</p>

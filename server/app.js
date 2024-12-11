@@ -7,9 +7,7 @@ const bookingRoutes = require("./routes/booking");
 const roomCategoryRoutes = require("./routes/roomCategory");
 const ContactRoute=require("./routes/contact")
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:5173' // Allow only React app's port
-}));
+app.use(cors());
 app.use(express.json()); // Parse JSON request bodies
 
 // Database connection
