@@ -16,6 +16,7 @@ const Booking = () => {
                     throw new Error('Failed to fetch bookings');
                 }
                 const data = await response.json();
+                console.log("Fetched Bookings:", data); // Log to verify populated data
                 setBookings(data);
             } catch (err) {
                 setError(err.message);
@@ -27,8 +28,9 @@ const Booking = () => {
         fetchBookings();
     }, []);
 
-    const filteredBookings = filter === 'all' 
-        ? bookings 
+
+    const filteredBookings = filter === 'all'
+        ? bookings
         : bookings.filter((booking) => booking.booking_status === filter);
 
     return (
@@ -57,8 +59,9 @@ const Booking = () => {
                             className={`booking-card ${booking.booking_status.toLowerCase()}`}
                         >
                             <p><strong>Booking Status:</strong> {booking.booking_status}</p>
-                            <p><strong>Hotel:</strong> {booking.hotel_name}</p>
-                            <p><strong>Category:</strong> {booking.room_category_id.category_name}</p>
+                            <p><strong>Hotel:</strong> {booking.room_category_id?.hotel_id?.hotel_name || 'Unknown'}</p>
+                            <p><strong>Category:</strong> {booking.room_category_id?.category_name || 'Unknown'}</p>
+
                             <p><strong>Check-in:</strong> {new Date(booking.check_in_date).toLocaleDateString()}</p>
                             <p><strong>Check-out:</strong> {new Date(booking.check_out_date).toLocaleDateString()}</p>
                             <p><strong>No. of Rooms:</strong> {booking.no_of_rooms}</p>

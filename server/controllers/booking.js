@@ -125,14 +125,23 @@ const getBookingById = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
 const getBookingByUserId = async (req, res) => {
   try {
     const { user_id } = req.params;
      
     console.log("Fetching bookings for user_id:", user_id);
 
-    // Fetch all bookings for the given user_id
-    const bookings = await Booking.find({ user_id });
+    // Fetch all bookings with populated room category and hotel name
+    const bookings = await Booking.find({ user_id })
+    .populate({
+        path: 'room_category_id',
+        select:'category_name' ,
+        populate: {
+            path: 'hotel_id', // Populate the hotel_id inside RoomCategory
+            select: 'hotel_name', // Only retrieve hotel_name
+        },
+    });
 
     // Check if any bookings are found
     if (!bookings.length) {
