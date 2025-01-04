@@ -12,7 +12,7 @@ const NavigationBar = () => {
 
     // Function to handle logout
     const logout = () => {
-        localStorage.removeItem('authenticate');
+         localStorage.setItem('isAuthenticate', false)
         localStorage.removeItem('username');
         navigate('/'); // Redirect to home after logout
     };

@@ -21,7 +21,7 @@ const createBooking = async (req, res) => {
     // Calculate the number of days
     const checkIn = new Date(check_in_date);
     const checkOut = new Date(check_out_date);
-    const timeDifference = checkOut.getTime() - checkIn.getTime()+1;
+    const timeDifference = checkOut.getTime() - checkIn.getTime();
     const numberOfDays = Math.ceil(timeDifference / (1000 * 3600 * 24)); // Convert milliseconds to days
 
     if (numberOfDays <= 0) {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Home from "./Home";
 
 const Hotel = () => {
     const location = useLocation();
@@ -9,7 +10,14 @@ const Hotel = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const isAuthenticated = localStorage.getItem('isAuthenticate') === 'true';
+
     useEffect(() => {
+        if (!isAuthenticated) {
+            navigate('/');
+        }
+
+
         const fetchRoomCategories = async () => {
             try {
                 const response = await fetch(`http://localhost:3000/API/roomcategory/hotel/${hotelId}`);
@@ -37,17 +45,19 @@ const Hotel = () => {
                 hotelName,
                 roomCategoryId: category._id,
                 categoryName: category.category_name,
-                pricePerRoom:category.amount_per_room ,
-                max_bed_per_room:category.max_bed_per_room
+                pricePerRoom: category.amount_per_room,
+                max_bed_per_room: category.max_bed_per_room
             },
         });
     };
 
     if (!hotelId) {
-        return <p className="text-center text-danger">No hotel selected</p>;
+        return  navigate('/');
     }
 
     return (
+
+
         <div className="container">
             <h1 className="mb-4 text-center">Hotel: {hotelName}</h1>
             {loading ? (
@@ -62,7 +72,7 @@ const Hotel = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{category.category_name}</h5>
                                     <p>Max Beds per Room: {category.max_bed_per_room}</p>
-                                    <p>Available Rooms: {category.available_room}</p>
+                                    {/* <p>Available Rooms: {category.available_room}</p> */}
                                     <p>Price per Room: ₹{category.amount_per_room}</p>
                                     <p>Food Charge (per person): ₹{category.food_charge}</p>
                                     <button
@@ -78,6 +88,10 @@ const Hotel = () => {
                 </div>
             )}
         </div>
+
+
+
+
     );
 };
 
